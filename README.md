@@ -17,12 +17,14 @@ See [ep4_azure_lab_terraform/scripts](https://github.com/someoneelsescloud/ep4_a
 ## Single-Deploy Terraform Configuration
 We will be reusing the [Single Deployment](https://github.com/someoneelsescloud/ep4_azure_lab_terraform/tree/master/lab/single-deploy) code from [EP4: Build an Azure Lab with Terraform](https://github.com/someoneelsescloud/ep4_azure_lab_terraform)
 
+### Code Structure Summary:
+![single-deploy-diagram](_images/file-structure-v2.png)
+
 This is a simplied Terraform deployment, where by all the configuration files are within the single folder i.e. a Terraform workspace. However the code has been refactored to use variable inputs which allow you to specify environment and region. The resource names have been updated to include the environment and tag have been added to specify environment specific details.
 The following diagram shows all the components that will be deployed!
-![single-deploy-diagram](_images/multi-env-deploy-v2.png)
 
-Code Structure Summary:
-![single-deploy-diagram](_images/file-structure-v2.png)
+### Deployment Overview
+![single-deploy-diagram](_images/multi-env-deploy-v2.png)
 
 Document References:
 - [Hashicorp - Terraform: Get Started - Azure](https://learn.hashicorp.com/collections/terraform/azure-get-started)
