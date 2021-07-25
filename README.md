@@ -3,7 +3,7 @@
 In this episode, I will show you how deploy multiple environments with the same code base!
 
 ## Prepare your Environment
-If you are not sure on how to setup your environment, refer to the [ep4_azure_lab_terraform - Prepare your Environment](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=939s)
+If you are not sure on how to setup your environment, refer to the [EP4: Build an Azure Lab with Terraform - Prepare your Environment](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=939s)
 
 ### Scripts
 
