@@ -1,4 +1,4 @@
-# EP7 - Deploy multiple Azure environments with the same code base - Terraform (TFVars)
+# EP9 - Deploy multiple Azure environments with the same code base - Terraform (TFVars)
 
 In this episode, I will show you how deploy multiple environments with the same code base!
 
