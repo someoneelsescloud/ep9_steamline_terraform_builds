@@ -1,12 +1,15 @@
 ########### Locals ###########
 locals {
-  name_1       = var.assetname
-  locationid   = var.location
-  resourcename = "${local.name_1}-${var.environment}-${local.locationid}"
+  name_1     = var.assetname
+  locationid = var.location
+  rg_name    = "${var.assetname}-${var.environment}-${local.locationid}"
+  res_name   = "${var.assetname}-${var.environment}"
+  sa_name    = "${local.name_1}sa${random_integer.number.result}"
 }
 
-resource "random_pet" "name_1" {
-  length = 1
+resource "random_integer" "number" {
+  min = 100
+  max = 999
 }
 
 resource "random_password" "password" {
@@ -17,7 +20,7 @@ resource "random_password" "password" {
 
 ########### Management 1  ###########
 resource "azurerm_resource_group" "resourcegroup_1" {
-  name     = "${local.resourcename}-rg-1"
+  name     = "${local.rg_name}-rg-1"
   location = local.locationid
 
   tags = {
@@ -27,7 +30,7 @@ resource "azurerm_resource_group" "resourcegroup_1" {
 }
 
 resource "azurerm_virtual_network" "virtualnetwork_1" {
-  name                = "${local.resourcename}-vnet-1"
+  name                = "${local.res_name}-vnet-1"
   location            = azurerm_resource_group.resourcegroup_1.location
   resource_group_name = azurerm_resource_group.resourcegroup_1.name
   address_space       = ["10.0.0.0/16"]
@@ -39,7 +42,7 @@ resource "azurerm_virtual_network" "virtualnetwork_1" {
 }
 
 resource "azurerm_subnet" "subnet_1" {
-  name                 = "${local.resourcename}-subnet-1"
+  name                 = "${local.res_name}-subnet-1"
   virtual_network_name = azurerm_virtual_network.virtualnetwork_1.name
   resource_group_name  = azurerm_resource_group.resourcegroup_1.name
   address_prefixes     = ["10.0.1.0/24"]
@@ -51,7 +54,7 @@ resource "azurerm_subnet" "subnet_1" {
 
 ########### Log Analytics Workspace ###########
 resource "azurerm_log_analytics_workspace" "law_1" {
-  name                = "${local.resourcename}-logs-1"
+  name                = "${local.res_name}-logs-1"
   location            = azurerm_resource_group.resourcegroup_1.location
   resource_group_name = azurerm_resource_group.resourcegroup_1.name
   sku                 = "PerGB2018"
@@ -160,7 +163,7 @@ resource "azurerm_log_analytics_datasource_windows_performance_counter" "mem_2" 
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "keyvault_1" {
-  name                        = "${local.resourcename}-kv-1"
+  name                        = "${local.res_name}-kv-1"
   location                    = azurerm_resource_group.resourcegroup_1.location
   resource_group_name         = azurerm_resource_group.resourcegroup_1.name
   enabled_for_disk_encryption = true
@@ -226,7 +229,7 @@ resource "azurerm_key_vault_secret" "workspacekey" {
 
 ########### Storage Account ###########
 resource "azurerm_storage_account" "storage_1" {
-  name                     = "${local.name_1}storage1"
+  name                     = local.sa_name
   resource_group_name      = azurerm_resource_group.resourcegroup_1.name
   location                 = azurerm_resource_group.resourcegroup_1.location
   account_tier             = "Standard"
@@ -240,12 +243,12 @@ resource "azurerm_storage_account" "storage_1" {
 
 ########### Virtual Machine #1 ###########
 resource "azurerm_network_interface" "virtualmachine_1" {
-  name                = "${local.name_1}-${var.environment}-nic-1"
+  name                = "${local.res_name}-nic-1"
   location            = azurerm_resource_group.resourcegroup_1.location
   resource_group_name = azurerm_resource_group.resourcegroup_1.name
 
   ip_configuration {
-    name                          = "${local.name_1}-${var.environment}-1"
+    name                          = "${local.res_name}-1"
     subnet_id                     = azurerm_subnet.subnet_1.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.virtualmachine_1.id
@@ -262,7 +265,7 @@ resource "azurerm_network_interface" "virtualmachine_1" {
 }
 
 resource "azurerm_public_ip" "virtualmachine_1" {
-  name                    = "${local.name_1}-${var.environment}-public-vm-nic-1"
+  name                    = "${local.res_name}-public-vm-nic-1"
   location                = azurerm_resource_group.resourcegroup_1.location
   resource_group_name     = azurerm_resource_group.resourcegroup_1.name
   allocation_method       = "Dynamic"
@@ -270,7 +273,7 @@ resource "azurerm_public_ip" "virtualmachine_1" {
 }
 
 resource "azurerm_windows_virtual_machine" "virtualmachine_1" {
-  name                  = "${local.name_1}-${var.environment}-vm-1"
+  name                  = "${local.res_name}-vm-1"
   location              = azurerm_resource_group.resourcegroup_1.location
   resource_group_name   = azurerm_resource_group.resourcegroup_1.name
   network_interface_ids = [azurerm_network_interface.virtualmachine_1.id]
