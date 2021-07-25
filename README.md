@@ -22,7 +22,7 @@ The following diagram shows all the components that will be deployed!
 ![single-deploy-diagram](_images/multi-env-deploy-v2.png)
 
 Code Structure Summary:
-![single-deploy-diagram](_files/file-structure-v2.png)
+![single-deploy-diagram](_images/file-structure-v2.png)
 
 Document References:
 - [Hashicorp - Terraform: Get Started - Azure](https://learn.hashicorp.com/collections/terraform/azure-get-started)
