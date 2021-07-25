@@ -2,7 +2,10 @@
 
 In this episode, I will show you how deploy multiple environments with the same code base!
 
-## Scripts
+## Prepare your Environment
+If you are not sure on how to setup your environment, refer to the [ep4_azure_lab_terraform - Prepare your Environment](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=939s)
+
+### Scripts
 
 See [ep4_azure_lab_terraform/scripts](https://github.com/someoneelsescloud/ep4_azure_lab_terraform/tree/master/scripts) for the following scripts to get started:
 
