@@ -1,6 +1,6 @@
-# EP9 - Deploy multiple Azure environments with the same code base - Terraform (TFVars)
+# EP9 - Streamline your Terraform Builds
 
-In this episode, I will show you how deploy multiple environments with the same code base!
+In this episode, I will show you how deploy multiple Azure environments with the same Terraform code base!
 
 ## Prepare your Environment
 #### If you are not sure on how to setup your environment, refer to the [EP4: Build an Azure Lab with Terraform - Prepare your Environment](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=939s)
@@ -19,6 +19,11 @@ See [ep4_azure_lab_terraform/scripts](https://github.com/someoneelsescloud/ep4_a
 
 ## Single-Deploy Terraform Configuration
 We will be reusing the [Single Deployment](https://github.com/someoneelsescloud/ep4_azure_lab_terraform/tree/master/lab/single-deploy) code from [EP4: Build an Azure Lab with Terraform](https://github.com/someoneelsescloud/ep4_azure_lab_terraform)
+
+### Key Benefits
+- Simplify your deployments.
+- Ensure that your environments are consistant.
+- Reduce code sprawl by having the same code base.
 
 ### Code Structure Summary:
 ![single-deploy-diagram](_images/file-structure-v2.png)
