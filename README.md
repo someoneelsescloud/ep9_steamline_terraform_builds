@@ -3,7 +3,7 @@
 In this episode, I will show you how deploy multiple environments with the same code base!
 
 ## Prepare your Environment
-If you are not sure on how to setup your environment, refer to the [EP4: Build an Azure Lab with Terraform - Prepare your Environment](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=939s)
+#### If you are not sure on how to setup your environment, refer to the [EP4: Build an Azure Lab with Terraform - Prepare your Environment](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=939s)
 
 ### Scripts
 
@@ -36,9 +36,28 @@ Document References:
 - [Define Input Variables](https://learn.hashicorp.com/tutorials/terraform/azure-variables?in=terraform/azure-get-started)
 - [Refactor Monolithic Terraform Configuration - Example is AWS but concept is the same!](https://learn.hashicorp.com/tutorials/terraform/organize-configuration)
 - [What is the difference between variable.tf and variable.tfvars in Terraform?](https://amazicworld.com/difference-between-variable-tf-and-variable-tfvars-in-terraform/)
-- 
+
+### Terraform Commands to Deploy
+```
+# Working Directory
+cd .\ep9_steamline_terraform_builds\dev
+
+# Initialise the Terraform Workspace
+terraform init -var-file="main.tfvars" ..\
+
+# Terraform Plan show what resources will be deployed
+terraform plan -var-file="main.tfvars" ..\
+
+# Terraform Apply to deploy the environment
+terraform apply -var-file="main.tfvars" ..\
+
+# Terraform Destory to delete the environment
+terraform destroy -var-file="main.tfvars" ..\
+```
+#### You can see more information on the commands from [EP4: Build an Azure Lab with Terraform - Terraform Commands](https://www.youtube.com/watch?v=MOaHQFeYI1Q&t=465s).
+
 ## Full episode on here:
-Website Link: https://www.someoneelsescloud.com/episodes/ep4-build-an-azure-lab-with-terraform
+Website Link: 
 
 ### Listen to the Audio Only version:
 
