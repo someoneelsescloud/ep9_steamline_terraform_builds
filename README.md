@@ -22,19 +22,19 @@ We will be reusing the [Single Deployment](https://github.com/someoneelsescloud/
 
 ### Key Benefits
 - Simplify your deployments.
-- Ensure that your environments are consistant.
+- Ensure that your environments are consistent.
 - Reduce code sprawl by having the same code base.
 
 ### Code Structure Summary:
 ![single-deploy-diagram](_images/file-structure-v2.png)
 
-This is a simplied Terraform deployment, where by all the configuration files are within the single folder i.e. a Terraform workspace. However the code has been refactored to use variable inputs which allow you to specify environment and region. The resource names have been updated to include the environment and tag have been added to specify environment specific details.
+This is a simplified Terraform deployment, where by all the configuration files are within the single folder i.e. a Terraform workspace. However the code has been refactored to use variable inputs which allow you to specify environment and region. The resource names have been updated to include the environment and tag have been added to specify environment specific details.
 The following diagram shows all the components that will be deployed!
 
 ### Deployment Overview
 ![single-deploy-diagram](_images/multi-env-deploy-v2.png)
 
-Document References:
+### Document References:
 - [Hashicorp - Terraform: Get Started - Azure](https://learn.hashicorp.com/collections/terraform/azure-get-started)
 - [Input Variables](https://www.terraform.io/docs/language/values/variables.html)
 - [Local Values](https://www.terraform.io/docs/language/values/locals.html)
